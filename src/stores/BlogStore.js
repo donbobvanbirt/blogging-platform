@@ -1,16 +1,16 @@
 import { EventEmitter } from 'events';
 import AppDispatcher from '../AppDispatcher'
 
-let _rooms = null;
+let _posts = null;
 
-class ChatRoomStore extends EventEmitter {
+class BlogStore extends EventEmitter {
   constructor() {
     super();
 
     AppDispatcher.register(action => {
       switch (action.type) {
-        case 'GOT_ROOMS':
-          _rooms = action.payload.data;
+        case 'GOT_POSTS':
+          _posts = action.payload.data;
           this.emit('CHANGE');
           break;
       }
@@ -25,10 +25,10 @@ class ChatRoomStore extends EventEmitter {
     this.removeListener('CHANGE',cb)
   }
 
-  getAllRooms() {
-    return _rooms;
+  getAllPosts() {
+    return _posts;
   }
 
 }
 
-export default new ChatRoomStore;
+export default new BlogStore;

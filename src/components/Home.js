@@ -4,45 +4,45 @@ import { browserHistory } from 'react-router'
 import { Header, Container, Button } from 'semantic-ui-react'
 import moment from 'moment'
 
-import RoomActions from '../actions/RoomActions'
-import ChatRoomStore from '../stores/ChatRoomStore'
+import BlogActions from '../actions/BlogActions'
+import BlogStore from '../stores/BlogStore'
 
 export default class Home extends Component {
   constructor() {
     super();
     this.state = {
-      posts: ChatRoomStore.getAllRooms()
+      posts: BlogStore.getAllPosts()
     }
     this._onChange = this._onChange.bind(this);
   }
 
   componentWillMount() {
-    RoomActions.getRooms();
-    ChatRoomStore.startListening(this._onChange)
+    BlogActions.getPosts();
+    BlogStore.startListening(this._onChange)
   }
 
   componentWillUnmount () {
-    ChatRoomStore.stopListening(this._onChange)
+    BlogStore.stopListening(this._onChange)
   }
 
   _onChange() {
     this.setState({
-      posts: ChatRoomStore.getAllRooms()
+      posts: BlogStore.getAllPosts()
     })
   }
 
   deletePost(id) {
     // console.log('id:', id)
-    RoomActions.deletePost(id);
+    BlogActions.deletePost(id);
   }
 
   render() {
     console.log('this.state', this.state)
     let { posts } = this.state;
-    let roomList = 'homePage';
+    let postList = '';
 
     if (posts) {
-      roomList = (
+      postList = (
         <div>
 
           {posts.map(post => {
@@ -68,7 +68,7 @@ export default class Home extends Component {
 
     return (
       <div>
-        {roomList}
+        {postList}
       </div>
     )
   }

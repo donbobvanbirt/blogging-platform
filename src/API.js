@@ -2,22 +2,12 @@ import axios, { get, post } from 'axios'
 import ServerActions from './actions/ServerActions'
 
 const API = {
-  getRooms() {
+  getPosts() {
     get('/api/blog')
     .then(res => {
       let { data } = res;
       // console.log("data", data)
-      ServerActions.gotRooms(data);
-    })
-    .catch(console.error)
-  },
-
-  sendMessage(roomId, msgObj) {
-    post(`/api/blog/message/${roomId}`, msgObj)
-    .then(res => {
-      let { data } = res;
-      // console.log('data', data)
-      this.getRooms();
+      ServerActions.gotPosts(data);
     })
     .catch(console.error)
   },
@@ -39,7 +29,7 @@ const API = {
     .then(res => {
       let { data } = res;
       console.log('data', data)
-      this.getRooms();
+      this.getPosts();
     })
     .catch(console.error)
   },

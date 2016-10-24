@@ -1,8 +1,8 @@
 import API from '../API'
 
-const RoomActions = {
-  getRooms() {
-    API.getRooms();
+const BlogActions = {
+  getPosts() {
+    API.getPosts();
   },
 
   sendMessage(roomId, msgObj) {
@@ -19,4 +19,4 @@ const RoomActions = {
   }
 }
 
-export default RoomActions;
+export default BlogActions;

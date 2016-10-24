@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { Form, Input, Button, TextArea } from 'semantic-ui-react'
 import marked from 'marked'
 
-import RoomActions from '../actions/RoomActions'
+import BlogActions from '../actions/BlogActions'
 
 export default class NewPost extends Component {
   constructor() {
@@ -45,7 +45,7 @@ export default class NewPost extends Component {
 
     if (newName) {
       console.log('obj', obj)
-      RoomActions.newRoom(obj)
+      BlogActions.newRoom(obj)
     }
   }
 

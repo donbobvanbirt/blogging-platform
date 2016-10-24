@@ -1,9 +1,9 @@
 import AppDispatcher from '../AppDispatcher'
 
 const ServerActions = {
-  gotRooms(data) {
+  gotPosts(data) {
     AppDispatcher.dispatch({
-      type: 'GOT_ROOMS',
+      type: 'GOT_POSTS',
       payload: { data }
     })
   }
