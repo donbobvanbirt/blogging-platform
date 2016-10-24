@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom'
 import { browserHistory } from 'react-router'
-import { Header, Container, Button } from 'semantic-ui-react'
+import { Header, Container, Button, Icon } from 'semantic-ui-react'
 import moment from 'moment'
 
 import BlogActions from '../actions/BlogActions'
@@ -57,7 +57,7 @@ export default class Home extends Component {
                 <Header as='h4'>By {author}</Header>
                 <Header as='h6'>{moment(createdAt).format('dddd MMM Do [at] h:mm:ss a')}</Header>
                 <div dangerouslySetInnerHTML={setBody(body)}></div>
-                <Button onClick={() => this.deletePost(_id)} negative>Delete</Button>
+                <Button onClick={() => this.deletePost(_id)} floated='right' icon negative><Icon name='remove' /></Button>
                 <br/>
                 <br/>
                 <br/>
