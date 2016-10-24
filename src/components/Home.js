@@ -42,10 +42,13 @@ export default class Home extends Component {
     let postList = '';
 
     if (posts) {
+      let sortedPosts = posts.sort((a, b) => {
+        return b.createdAt - a.createdAt;
+      })
       postList = (
         <div>
 
-          {posts.map(post => {
+          {sortedPosts.map(post => {
             let { _id, author, title, body, createdAt } = post;
             let setBody = (body) => {return {__html: `${body}`}}
             return (
